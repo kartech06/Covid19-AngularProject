@@ -17,6 +17,7 @@ export class CountriesComponent implements OnInit {
   TotalRecovered=0;
   dateWisedata;
   datatable=[];
+  count="";
   chart ={
     LineChart: 'LineChart',
     height: 500,
@@ -74,6 +75,7 @@ export class CountriesComponent implements OnInit {
   Update(count: string)
   {
     console.log(count);
+    this.count=count;
     this.result.forEach(res=>
       {
         if(res.country==count)

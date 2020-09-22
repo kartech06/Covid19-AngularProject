@@ -1,0 +1,45 @@
+<div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Corona Covid-19 Tracker</h1>
+    <hr>
+    <div class="mx-auto">
+      <div class="form-group col-lg-5 mx-auto">
+          <label for="c">Select Country</label>
+          <select name="" class="form-control" id="c" #input (change)='Update(input.value)'>
+              <option value="{{con}}" *ngFor='let con of country'>{{con}}</option>
+          </select>
+      </div>
+  </div>
+  <hr>
+ <app-dbcard [TotalConfirmed]="TotalConfirmed" [TotalRecovered]="TotalRecovered" [TotalActive]="TotalActive" [TotalDeaths]="TotalDeaths"></app-dbcard>
+    <hr>
+</div>
+<div class="row">
+  <div class="col md-12">
+<h1 style="text-align: center; font-size: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> {{count}} </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead>
+          <tr>
+              <th>Sno.</th>
+              <th>Date</th>
+              <th>Cases</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor='let cs of selectedCountryData; index as i '>
+              <td>{{i+1}}</td>
+              <td>{{cs.date | date}}</td>
+              <td>{{cs.cases}}</td>
+          </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class="col">
+    <google-chart [height]="chart.height" [type]="chart.LineChart" [data]="datatable" [options]="chart.options"> </google-chart>
+  </div>
+</div>
+  
